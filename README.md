@@ -7,10 +7,9 @@ Berikut link menuju aplikasi:
 Alternatif lain, Anda bisa kunjungi url berikut: https://pbptugas2.herokuapp.com/katalog/
 
 
-## Urls, Views, Models, dan HTML
 ![Django Chart - Compressed](static/Django%20Chart%20-%20Compressed.jpg)
 
-### Kaitan urls.py, views.py, models.py, dan HTML
+## Kaitan urls.py, views.py, models.py, dan HTML
 Terdapat 2 jenis urls.py pada proyek Django: project urls dan app urls.py. Saat user melakukan request dengan mengunjungi url halaman web, project urls akan tertrigger untuk menentukan urls.py pada app mana yang akan dieksekusi. 
 
 Urls.py tersebut akan akan menentukan views.py mana yang akan dipangil berdasarkan url path yang dimasukkan user. Selanjutnya, jika diperlukan, views.py akan mengambil data dari models.py yang kemudian dikirim ke berkas html. Terkahir, berkas html akan menampilkan halaman web secara visual kepada user berdasarkan data-data yang diambil dari views.
