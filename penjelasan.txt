@@ -1,0 +1,22 @@
+1. -> user akan melakukan request dengan mengunjungi halaman website
+
+2. -> urls.py pada project_django.urls menerima request lalu akan menkonfigurasi urls.py milik folder aplikasi
+      apa yang akan dipanggil.
+   -> urls.py pada folder aplikasi akan mengkonfigurasi & menentukan views mana yang akan dipangil
+      berdasarkan url path yang dimasukkan user.
+   -> domain.com/{urls.py project}/{urls.py aplikasi)
+
+3. -> views akan mengambil data dari models untuk dimasukkan ke fungsi yang merender html 
+      yang telah diset. 
+   -> Html tersebut akan menggunakan data yang diset pada views.py 
+      [kalau ada req, tunjukan katalog.html, ambil datanya dari context (context mengambil data dari models)]
+   -> iterasi pada html itu sebenrnya mengiterasi atribut tiap object yang telah diset pada class CatalogItem di models.py
+
+4. -> models akan menyesuaikan nama atribut dengan nama kolom pada database (json), misalnya "item_name".
+   -> item_name sebenarnya merujuk pada nama kolom pada database. Jika diubah menjadi item_nam, maka akan
+      terjadi error "tidak ada kolom item_nam pada database". 
+   -> Jadi, tiap atribut pada class models.py harus tersedia dalam database.
+   -> It contains the essential fields and behaviors of the data you’re storing. 
+   -> Generally, each model maps to a single database table.
+
+5. html akan menampilkan halaman secara visual (front-end) berdasarkan data-data yang diambil dari views.
