@@ -10,7 +10,13 @@ Alternatif lain, Anda bisa kunjungi url berikut: https://pbptugas2.herokuapp.com
 ![Django Chart - Compressed](static/Django%20Chart%20-%20Compressed.jpg)
 
 ## Kaitan urls.py, views.py, models.py, dan HTML
+<<<<<<< HEAD
 Terdapat 2 jenis urls.py pada proyek Django: project urls dan app urls. Saat user melakukan request dengan mengunjungi url halaman web, project urls akan tertrigger untuk menentukan urls.py pada app mana yang akan dieksekusi.
+=======
+Terdapat 2 jenis urls.py pada proyek Django: project urls dan app urls. Saat user melakukan request dengan mengunjungi url halaman web, project urls akan tertrigger untuk menentukan urls.py pada app mana yang akan dieksekusi. 
+
+App urls.py tersebut akan menentukan fungsi pada views.py untuk dipangil berdasarkan url path yang dimasukkan user. Selanjutnya, jika diperlukan, views.py akan mengambil data dari models.py yang kemudian dikirim ke berkas html. Terkahir, berkas html akan menampilkan halaman web secara visual kepada user berdasarkan data-data yang diambil dari views.
+>>>>>>> 9f151d3ad46ace66b6d10eb085940ca4ad54da17
 
 App urls.py tersebut akan menentukan fungsi pada views.py untuk dipangil berdasarkan url path yang dimasukkan user. Selanjutnya, jika diperlukan, views.py akan mengambil data dari models.py yang kemudian dikirim ke berkas html. Terkahir, berkas html akan menampilkan halaman web secara visual kepada user berdasarkan data-data yang diambil dari views.
 
@@ -31,6 +37,11 @@ Berikut penjelasan bagaimana saya melakukan implementasi:
 3. Saya lakukan iterasi tiap data pada katalog_item (dari context views.py), lalu memanggil atribut dari data tersebut agar ditampilkan pada tabel. Tempat block for loop ini berada di dalam block table.
 
 4. Git push, lalu saya hubungkan heroku dan github melalui API code yang disediakan oleh heroku. API tersebut diinput pada menu repository secret dengan variabel yang sesuai. Selanjutnya, saya pastikan isi berkas Procfile sudah benar (sesuai dengan nama project). Kemudian, saya jalankan workflow di github. Aplikasi berhasil berjalan.
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9f151d3ad46ace66b6d10eb085940ca4ad54da17
 
 
 <br>
