@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "Watched",
+            "title" : "Hereditary",
+            "rating": 5,
+            "release_date": "June 27, 2018",
+            "review": "In many ways, Hereditary is the horror movie I've been restlessly waiting to see for so many years."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "Watched",
+            "title" : "Joker",
+            "rating": 5,
+            "release_date": "October 2, 2019",
+            "review": "Most of the time movies are anticipated like this they end up falling short, way short. Joker is the first time I was more than happy with the hype."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "Not seen",
+            "title" : "Us",
+            "rating": 4,
+            "release_date": "September 20, 2019",
+            "review": "It's a shame because there is some fantastic imagery and a wonderful theme lying underneath but in the end it can not overcome its plot holes and failed delivery of the message its trying to speak."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "Watched",
+            "title" : "Avengers: Endgame",
+            "rating": 5,
+            "release_date": "April 24, 2019",
+            "review": "Thank you Marvel, End Game is an ending that give me speechless."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "Not seen",
+            "title" : "Top Gun: Maverick",
+            "rating": 5,
+            "release_date": "May 27, 2022",
+            "review": "This is one of the best theatrical experiences I've had and I'm so happy someone has taken the practical route rather than throwing everyone into a green screen."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "Not seen",
+            "title" : "Nope",
+            "rating": 4,
+            "release_date": "August 17, 2022",
+            "review": "The film felt slightly long due to the first and third acts feeling fast and somewhat stuffed with a lot of goings ons while the second act felt very slow and drawn out."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "Watched",
+            "title" : "Doctor Stange: Multiverse of Madness",
+            "rating": 3,
+            "release_date": "May 25, 2022",
+            "review": "Not enough multiverse and maybe too much madness. Sam Raimi definitely put a splash of horror in this action film."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "Not seen",
+            "title" : "Bullet Train",
+            "rating": 3,
+            "release_date": "Augustu 10, 2022",
+            "review": "A fun and crazy film full of twists and turns, incredibly surprised how this managed to scrape being a 15 UK rating with that amount of swearing and gore but still a fun, Deadpool-esque, film."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "Not seen",
+            "title" : "Pearl",
+            "rating": 4,
+            "release_date": "September 16, 2022",
+            "review": "Pearl is Ti West's followup to the 1970s-set X, which serves as an origin story for that film's villain."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "Not seen",
+            "title" : "The Woman King",
+            "rating": 4,
+            "release_date": "September 16, 2022",
+            "review": "First off, the story is engaging and the the plot progression isn't bad. But something just felt missing."
+        }
+    }
+]
