@@ -13,7 +13,10 @@ context = {
 }
 
 def show_mywatchlist_html(request):
-    return render(request, "mywatchlist.html", context)
+    try:
+        return render(request, "mywatchlist.html", context)
+    except data_mywatchlist.DoesNotExist:
+        raise Http404
 
 def show_mywatchlist_xml(request):
     return HttpResponse(serializers.serialize("xml", data_mywatchlist), content_type="application/xml")
