@@ -8,7 +8,7 @@ data_mywatchlist = MyWatchList.objects.all()
 
 context = {
     'mywatchlist_item': data_mywatchlist,
-    'nama': 'Reyhan Vivaldi',
+    'nama': 'Reyhan Vivaldi Adrian',
     'npm': '2106750811'
 }
 
