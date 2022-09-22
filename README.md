@@ -2,16 +2,16 @@
 
 Berikut link aplikasi untuk Assignment 3:
 
-[![HTML](https://img.shields.io/badge/DATA%20HTML-298D46?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/html)
-[![JSON](https://img.shields.io/badge/DATA%20JSON-0054F7?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/json)
-[![XML](https://img.shields.io/badge/DATA%20XML-F24E1E?style=for-the-badge&logo=github&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/xml) 
+[![HTML](https://img.shields.io/badge/DATA%20HTML-298D46?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/html/)
+[![JSON](https://img.shields.io/badge/DATA%20JSON-0054F7?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/json/)
+[![XML](https://img.shields.io/badge/DATA%20XML-F24E1E?style=for-the-badge&logo=github&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/xml/) 
 
 ### Postman - HTML
-![Postman HTML](staticfiles/3_postman_html.jpg)
+![Postman HTML](static/3_postman_html.jpg)
 ### Postman - JSON
-![Postman JSON](staticfiles/3_postman_json.jpg)
+![Postman JSON](static/3_postman_json.jpg)
 ### Postman - XML
-![Postman XML](staticfiles/3_postman_xml.jpg)
+![Postman XML](static/3_postman_xml.jpg) 
 
 
 ## Perbedaan JSON, XML, dan HTML
