@@ -3,7 +3,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 1,
         "fields": {
-            "watched": "Watched",
+            "watched": true,
             "title" : "Hereditary",
             "rating": 5,
             "release_date": "June 27, 2018",
@@ -14,7 +14,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 2,
         "fields": {
-            "watched": "Watched",
+            "watched": true,
             "title" : "Joker",
             "rating": 5,
             "release_date": "October 2, 2019",
@@ -25,7 +25,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 3,
         "fields": {
-            "watched": "Not seen",
+            "watched": false,
             "title" : "Us",
             "rating": 4,
             "release_date": "September 20, 2019",
@@ -36,7 +36,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 4,
         "fields": {
-            "watched": "Watched",
+            "watched": true,
             "title" : "Avengers: Endgame",
             "rating": 5,
             "release_date": "April 24, 2019",
@@ -47,7 +47,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 5,
         "fields": {
-            "watched": "Not seen",
+            "watched": false,
             "title" : "Top Gun: Maverick",
             "rating": 5,
             "release_date": "May 27, 2022",
@@ -58,7 +58,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 6,
         "fields": {
-            "watched": "Not seen",
+            "watched": true,
             "title" : "Nope",
             "rating": 4,
             "release_date": "August 17, 2022",
@@ -69,7 +69,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 7,
         "fields": {
-            "watched": "Watched",
+            "watched": true,
             "title" : "Doctor Stange: Multiverse of Madness",
             "rating": 3,
             "release_date": "May 25, 2022",
@@ -80,10 +80,10 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 8,
         "fields": {
-            "watched": "Not seen",
+            "watched": false,
             "title" : "Bullet Train",
             "rating": 3,
-            "release_date": "Augustu 10, 2022",
+            "release_date": "August 10, 2022",
             "review": "A fun and crazy film full of twists and turns, incredibly surprised how this managed to scrape being a 15 UK rating with that amount of swearing and gore but still a fun, Deadpool-esque, film."
         }
     },
@@ -91,7 +91,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 9,
         "fields": {
-            "watched": "Not seen",
+            "watched": false,
             "title" : "Pearl",
             "rating": 4,
             "release_date": "September 16, 2022",
@@ -102,7 +102,7 @@
         "model": "mywatchlist.mywatchlist",
         "pk": 10,
         "fields": {
-            "watched": "Not seen",
+            "watched": false,
             "title" : "The Woman King",
             "rating": 4,
             "release_date": "September 16, 2022",
