@@ -2,9 +2,9 @@
 
 Berikut link aplikasi untuk Assignment 3:
 
-[![HTML](https://img.shields.io/badge/DATA%20HTML-298D46?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/html)
-[![JSON](https://img.shields.io/badge/DATA%20JSON-0054F7?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/json)
-[![XML](https://img.shields.io/badge/DATA%20XML-F24E1E?style=for-the-badge&logo=github&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/xml) 
+[![HTML](https://img.shields.io/badge/DATA%20HTML-298D46?style=for-the-badge&logoColor=white)](/static/3_postman_html.jpg)
+[![JSON](https://img.shields.io/badge/DATA%20JSON-0054F7?style=for-the-badge&logoColor=white)](3_postman_json.jpg)
+[![XML](https://img.shields.io/badge/DATA%20XML-F24E1E?style=for-the-badge&logo=github&logoColor=white)]3_postman_xml.jpg) 
 
 ### Postman - HTML
 ![Postman HTML](staticfiles/3_postman_html.jpg)
