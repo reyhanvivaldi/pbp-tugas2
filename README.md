@@ -1,36 +1,46 @@
-# Welcome to Rey's PBP Tugas 2 Github Repository!
+# Welcome to Rey's PBP Assignment Github Repository!
 
-Berikut link menuju aplikasi:
+Berikut link aplikasi untuk Assignment 3:
 
-[![LINKS](https://img.shields.io/badge/LIHAT%20APLIKASI-0054F7?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/katalog/)
+[![HTML](https://img.shields.io/badge/DATA%20HTML-298D46?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/html)
+[![JSON](https://img.shields.io/badge/DATA%20JSON-0054F7?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/json)
+[![XML](https://img.shields.io/badge/DATA%20XML-F24E1E?style=for-the-badge&logo=github&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/xml) 
 
-Alternatif lain, Anda bisa kunjungi url berikut: https://pbptugas2.herokuapp.com/katalog/
-
-
-![Django Chart - Compressed](static/Django%20Chart%20-%20Compressed.jpg)
-
-## Kaitan urls.py, views.py, models.py, dan HTML
-Terdapat 2 jenis urls.py pada proyek Django: project urls dan app urls. Saat user melakukan request dengan mengunjungi url halaman web, project urls akan tertrigger untuk menentukan urls.py pada app mana yang akan dieksekusi.
-
-App urls.py tersebut akan menentukan fungsi pada views.py untuk dipangil berdasarkan url path yang dimasukkan user. Selanjutnya, jika diperlukan, views.py akan mengambil data dari models.py yang kemudian dikirim ke berkas html. Terkahir, berkas html akan menampilkan halaman web secara visual kepada user berdasarkan data-data yang diambil dari views.
-
-
-## Virtual Environment
-Virtual environment adalah environment yang digunakan Python atau Django dalam mengeksekusi program. Penggunaan virtual environment ini direkomendasikan untuk memisahkan dependency seperti code library atau package suatu project dengan project yang lain agar tidak tercampur. 
-
-Akibat ruang virtual ini, perubahan pada project satu akan terisolasi dan tidak berpengaruh pada project lainnya. Namun, virtual environment ini bersifat "rekomendasi". Kita tetap bisa membuat project Django tanpa virtual environtment dan kita harus siap dengan konsekuensi yang mungkin terjadi.
+### Postman - HTML
+![Postman HTML](staticfiles/3_postman_html.jpg)
+### Postman - JSON
+![Postman JSON](staticfiles/3_postman_json.jpg)
+### Postman - XML
+![Postman XML](staticfiles/3_postman_xml.jpg)
 
 
-## Penjelasan Implementasi
+## Perbedaan JSON, XML, dan HTML
+Perbedaan yang paling jelas adalah JSON berbasis Javascript, sedangkan HTML dan XML adalah markup language. Dalam konteks fungsi, JSON berfungsi untuk merepresentasikan dan menyimpan data, sedangkan XML sejatinya berfungsi untuk menyimpan data. HTML tidak membawa/menyimpan data, melainkan hanya menampilkan data. Dalam segi kemudahan pembacaan, kita lebih mudah membaca data dalam JSON daripada XML, sedangkan HTML bergantung pada bagaimana kita membuat tampilannya. Struktur JSON yang simpel dan minim syntax membuat JSON lebih mudah dibaca oleh manusia dibanding XML. Sedangkan, karakter XML adalah old-fashioned dan kompleks akibat struktur tag yang memakan space. Namun, kompleksitas XML inilah yang membuat XML tidak hanya bisa untuk mengirim data, tetapi juga memproses/memformat objek dan dokumen. 
+
+Dalam konteks keamanan, XML lebih aman daripada JSON. Namun, pengiriman data dengan format JSON bisa lebih cepat dibandingkan XML karena ukuran file yang lebih kecil. Perbedaan yang lain adalah XML dapat menghandle komentar, sedangkan JSON tidak. XML juga mendukung berbagai tipe data seperti gambar dan bagan, sedangkan JSON mendukung string, objek, angka, boolean, dan arrays. XML menyimpan data dalam tree structure, sedangkan JSON menyimpan data seperti map yang terdiri dari pasangan key-value.
+
+
+## Mengapa kita memerlukan data delivery dalam implementasi platform?
+Data delivery sangat diperlukan karena dalam suatu platform akan ada proses dimana pertukaran data itu terjadi. Misalnya, saat kita mengakses suatu halaman yang menampilakan data, user akan mengirimkan request yang ujungnya diterima oleh database. Kemudian database akan mengirimkan data yang diminta sebagai respon. Data delivery memiliki peran dalam proses ini.
+
+
+## Penjelasan Pengerjaan Checklist Assignment 3
 Berikut penjelasan bagaimana saya melakukan implementasi:
 
-1. Saya mengimport class CatalogItem dari models di folder aplikasi katalog. Kemudian, setiap objek pada CatalogItem saya masukkan ke variable data_katalog. Lalu, saya membuat dictionary "context" untuk menyimpan data yang akan dirender. Selanjutnya, saya membuat fungsi show_katalog yang mengembalikan pemanggilan fungsi render yang diberikan argumen req, berkas html, dan data pada dictionary context. Fungsi ini akan memberikan instruksi agar html menampilkan data yang sesuai.
+1. Saya menjalankan command "python manage.py startapp mywatchlist" untuk membuat aplikasi baru bernama mywatchlist pada project_django.
 
-2. Pertama, saya import fungsi path dari library Django dan fungsi show_katalog dari views.py aplikasi katalog. Lalu membuat application namespace yang disimpan pada variabel "app_name". Selanjutnya, saya membuat urlpatterns untuk menentukan path url dan menghubungkannya dengan pemanggilan fungsi dari views.py. Lalu, saya tambahkan path baru pada project urls.py agar app urls terhubung dengan project secara keseluruhan.
+2. Kemudian, saya daftarkan nama aplikasi mywatchlist pada INSTALLED_APPS yang ada di settings.py project_django. Lalu saya lakukan command makemigrations dan dilanjutkan dengan migrate.
 
-3. Saya lakukan iterasi tiap data pada katalog_item (dari context views.py), lalu memanggil atribut dari data tersebut agar ditampilkan pada tabel. Tempat block for loop ini berada di dalam block table.
+3. Membuat class MyWatchList yang memiliki atribut watched, title, rating, release_date, dan review. Setiap atribut memiliki field yang sesuai dengan fungsinya masing-masing.
 
-4. Git push, lalu saya hubungkan heroku dan github melalui API code yang disediakan oleh heroku. API tersebut diinput pada menu repository secret dengan variabel yang sesuai. Selanjutnya, saya pastikan isi berkas Procfile sudah benar (sesuai dengan nama project). Kemudian, saya jalankan workflow di github. Aplikasi berhasil berjalan.
+4. Untuk membuat data, pertama saya buat folder fixtures pada direktori mywatchlist yang berisi file format JSON bernama initial_mywatchlist_data. Kemudian, saya isi file JSON ini dengan data yang fieldnya disesuaikan dengan class pada models. Lalu, saya lakukan command loaddata.
+
+5. Dalam file views.py pada aplikasi mywatchlist, saya mengimport modul yang diperlukan dan membuat tiga fungsi yang masing-masing berfungsi untuk mengembalikan display data yang sesuai (HTML, JSON, dan XML).
+
+6. Dalam file urls.py pada folder mywatchlist, saya buat routing agar data bisa diakses melalui URL dengan path yang berbeda (/html, /json, /xml). Tiap path itu akan terhubung pada fungsi pada views.py yang bersesuaian. Kemudian, saya tambahkan path baru (mywatchlist/) pada urls.py di folder project_django agar terhubung dengan urls.py aplikasi.
+
+7. Git add, commit, dan push. Kemudian saya cek workflow pada github. Aplikasi bisa berjalan, tetapi database (initial_mywatchlist_data.json) tidak muncul. Lalu saya lakukan loaddata ulang di CLI Heroku Bash, kemudian aplikasi berjalan lancar.
+
 
 <br>
 <hr>
