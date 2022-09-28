@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Add New Task</title>
+{% endblock meta %}
+
+{% block content %}  
+
+<div class = "add_task">
+    
+    <h1>Add New Task</h1>  
+
+        <form method="POST" >  
+            {% csrf_token %}  
+            <table class="form">
+                {{ form.as_table }} 
+                <tr>  
+                    <td></td>
+                    <td><input type="submit" name="submit" value="Submit"/></td>  
+                </tr>  
+            </table>
+            <button class="back-button"><a href="{% url 'todolist:show_home' %}" class="back-text-button">Back to home</a></button>
+            <!-- <button class="submit-button"><a href="{% url 'todolist:get_add_task' %}" class="submit-text-button">Submit</a></button> -->
+        </form>
+
+</div>  
+
+<style>
+    .form {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    button {
+        cursor: pointer;
+        transition: background-color 0.2s;
+        transition: color 0.2s;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 30px;
+        border: none;
+        border-radius: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .submit-button {
+        background-color: #7253AC;
+        margin-left: 5px;
+    }
+
+    .back-text-button {
+        color: #7253AC;
+        text-decoration: none;
+    }
+
+    .submit-text-button {
+        color: white;
+        text-decoration: none;
+    }
+
+    .back-button {
+        margin-left: 10px;
+    }
+
+    .submit-button:hover {
+        background-color: #633cac;
+    }
+
+    .back-button:hover {
+        background-color: #e4e0ea;
+    }
+
+    .
+    
+  </style>
+
+{% endblock content %}

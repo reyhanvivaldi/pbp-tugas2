@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+
+  <h1>Assignment 4 PBP</h1>
+
+  <h5>Howdy, {{nama_user}}!</h5>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+    {% comment %} Add the data below this line {% endcomment %}
+
+    {% for item in task_item %}
+    <tr>
+      <th>{{item.date}}</th>
+      <th>{{item.title}}</th>
+      <th>{{item.description}}</th>
+    </tr>
+    {% endfor %}
+
+  </table>
+    <button class="add-task-button"><a href="{% url 'todolist:get_add_task' %}" class="text-button">Add new task</a></button>
+    <button class="logout-button"><a href="{% url 'todolist:logout_user' %}" class="text-button">Logout</a></button>
+
+
+
+
+
+  <style>
+    button {
+        cursor: pointer;
+        transition: background-color 0.2s;
+        transition: color 0.2s;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 40px;
+        border: none;
+        border-radius: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+
+    h5 {
+      font-size: 25px;
+      margin-bottom: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    tr {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .logout-button {
+        background-color: #7253AC;
+        color: white;
+        text-decoration: none;
+    }
+    .logout-button:hover {
+        background-color: #633cac;
+    }
+
+    .add-task-button {
+        background-color: #7253AC;
+        color: white;
+        text-decoration: none;
+        
+    }
+    .add-task-button:hover {
+        background-color: #633cac;
+    }
+
+    .text-button {
+      color: white;
+      text-decoration: none;
+    }
+    
+  </style>
+
+ {% endblock content %}
+
