@@ -17,7 +17,6 @@ def show_home(request):
     context = {
         'nama_user': request.user.username,
         'task_item': data_task,
-        'last_login': request.COOKIES['last_login'],
     }
 
     return render(request, 'home.html', context)
