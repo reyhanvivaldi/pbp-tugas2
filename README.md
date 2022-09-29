@@ -1,45 +1,46 @@
 # Welcome to Rey's PBP Assignment Github Repository!
 
-Berikut link aplikasi untuk Assignment 3:
+Berikut link aplikasi untuk Assignment 4:
 
-[![HTML](https://img.shields.io/badge/DATA%20HTML-298D46?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/html/)
-[![JSON](https://img.shields.io/badge/DATA%20JSON-0054F7?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/json/)
-[![XML](https://img.shields.io/badge/DATA%20XML-F24E1E?style=for-the-badge&logo=github&logoColor=white)](https://pbptugas2.herokuapp.com/mywatchlist/xml/) 
-
-### Postman - HTML
-![Postman HTML](static/3_postman_html.jpg)
-### Postman - JSON
-![Postman JSON](static/3_postman_json.jpg)
-### Postman - XML
-![Postman XML](static/3_postman_xml.jpg) 
+[![TODOLIST](https://img.shields.io/badge/TodoList%20Heroku-298D46?style=for-the-badge&logoColor=white)](https://pbptugas2.herokuapp.com/todolist/)
 
 
-## Perbedaan JSON, XML, dan HTML
-Perbedaan yang paling jelas adalah JSON berbasis Javascript, sedangkan HTML dan XML adalah markup language. Dalam konteks fungsi, JSON berfungsi untuk merepresentasikan dan menyimpan data, sedangkan XML sejatinya berfungsi untuk menyimpan data. HTML tidak membawa/menyimpan data, melainkan hanya menampilkan data. Dalam segi kemudahan pembacaan, kita lebih mudah membaca data dalam JSON daripada XML, sedangkan HTML bergantung pada bagaimana kita membuat tampilannya. Struktur JSON yang simpel dan minim syntax membuat JSON lebih mudah dibaca oleh manusia dibanding XML. Sedangkan, karakter XML adalah old-fashioned dan kompleks akibat struktur tag yang memakan space. Namun, kompleksitas XML inilah yang membuat XML tidak hanya bisa untuk mengirim data, tetapi juga memproses/memformat objek dan dokumen. 
-
-Dalam konteks keamanan, XML lebih aman daripada JSON. Namun, pengiriman data dengan format JSON bisa lebih cepat dibandingkan XML karena ukuran file yang lebih kecil. Perbedaan yang lain adalah XML dapat menghandle komentar, sedangkan JSON tidak. XML juga mendukung berbagai tipe data seperti gambar dan bagan, sedangkan JSON mendukung string, objek, angka, boolean, dan arrays. XML menyimpan data dalam tree structure, sedangkan JSON menyimpan data seperti map yang terdiri dari pasangan key-value.
+## Kegunaan {% csrf_token %} pada elemen form
+CSRF token adalah kode alphanumeric acak yang unik pada site terkait, sehingga tidak ada site yang memiliki kode CSRF yang sama. Fungsi CSRF token adalah untuk membangun proteksi terhadap serangan CSRF (Cross Site Request Forgeries), yaitu serangan yang terjadi saat suatu website menyimpan link, tombol, form, atau elemen lain yang bisa mengeksekusi malicious action dalam website dengan menggunakan credential dari logged-in user. Apabila CSRF token tidak ada, maka tidak ada proteksi terhadap serangan ini sehingga user bisa saja melakukan action yang sebenarnya tidak ingin dia lakukan.
 
 
-## Mengapa kita memerlukan data delivery dalam implementasi platform?
-Data delivery sangat diperlukan karena dalam suatu platform akan ada proses dimana pertukaran data itu terjadi. Misalnya, saat kita mengakses suatu halaman yang menampilakan data, user akan mengirimkan request yang ujungnya diterima oleh database. Kemudian database akan mengirimkan data yang diminta sebagai respon. Data delivery memiliki peran dalam proses ini.
+## Apakah bisa membuat form manual tanpa menggunakan generator?
+Ya, kita bisa membuat form secara manual tanpa generator. Kelebihannya adalah kita bisa memberikan efek CSS pada form tersebut.
+
+Gambaran besarnya, kita bisa buat section pada template html untuk menampilkan tiap field form secara manual dengan membuat label tiap field form, misalnya "Nama", kemudian buat form field sesuai yang didefinisikan pada forms.py dengan memanggil {{ form.< formfield > }}. Kemudian buat tombol yang mentrigger pemrosesan data yang dimasukkan pada form.
+
+Step pembuatan form manual: https://www.geeksforgeeks.org/render-django-form-fields-manually/
 
 
-## Penjelasan Pengerjaan Checklist Assignment 3
+## Proses alur submisi dari HTML form, penyimpanan ke database, hingga munculnya data di HTML
+User mengisi form, kemudian browser akan men-generate request, method, dan argumen ke server. Pastikan request tersebut adalah POST request agar bisa disimpan di database. Setelah request diterima oleh server, views.py akan memproses data dengan semua logic yang dibuat, misalnya dengan menyimpan data form tersebut pada models dengan form.save(). Data yang tersimpan di database ini lalu bisa ditampilkan di HTML sesuai yang didefinisikan oleh fungsi terkait pada views.py
+
+
+## Penjelasan Pengerjaan Checklist Assignment 4
 Berikut penjelasan bagaimana saya melakukan implementasi:
 
-1. Saya menjalankan command "python manage.py startapp mywatchlist" untuk membuat aplikasi baru bernama mywatchlist pada project_django.
+1. Saya menjalankan command "python manage.py startapp todolist" untuk membuat aplikasi baru bernama todolist pada project_django. Daftarkan nama aplikasi mywatchlist pada INSTALLED_APPS yang ada di settings.py project_django. 
 
-2. Kemudian, saya daftarkan nama aplikasi mywatchlist pada INSTALLED_APPS yang ada di settings.py project_django. Lalu saya lakukan command makemigrations dan dilanjutkan dengan migrate.
+2. Menambahkan path baru pada urlpatterns di project urls.py agar bisa mengakses localhost:8000/todolist
 
-3. Membuat class MyWatchList yang memiliki atribut watched, title, rating, release_date, dan review. Setiap atribut memiliki field yang sesuai dengan fungsinya masing-masing.
+3. Membuat class Task serta atribut-atributnya. Lalu saya lakukan makemigrations dan migrate.
 
-4. Untuk membuat data, pertama saya buat folder fixtures pada direktori mywatchlist yang berisi file format JSON bernama initial_mywatchlist_data. Kemudian, saya isi file JSON ini dengan data yang fieldnya disesuaikan dengan class pada models. Lalu, saya lakukan command loaddata.
+4. Membuat fungsi baru untuk login, register, add task, dan logout, pada views.py serta template html yang bersesuaian untuk tiap fungsi.
 
-5. Dalam file views.py pada aplikasi mywatchlist, saya mengimport modul yang diperlukan dan membuat tiga fungsi yang masing-masing berfungsi untuk mengembalikan display data yang sesuai (HTML, JSON, dan XML).
+5. Membuat table task, tombol task baru, dan logout pada template html. Tombol task baru akan meredirect ke halaman create-task, dan logout akan memanggil fungsi logout pada views.py.
 
-6. Dalam file urls.py pada folder mywatchlist, saya buat routing agar data bisa diakses melalui URL dengan path yang berbeda (/html, /json, /xml). Tiap path itu akan terhubung pada fungsi pada views.py yang bersesuaian. Kemudian, saya tambahkan path baru (mywatchlist/) pada urls.py di folder project_django agar terhubung dengan urls.py aplikasi.
+6. Untuk membuat halaman add new task, pertama saya membuat file baru bernama forms.py. Di file ini, berisi class modelform yang menghubungkan antara form secara visual dengan class pada models.py, sehingga data yang dimasukkan di form dapat disimpan di database. Kemudian, class form diintegrasikan dengan template HTML dengan logic dan pemrosesan yang didefisinikan pada views.py, tepatnya di fungsi get_add_task. Kemudian, saya buat template HTML yang menampilkan form tersebut sebagai table.
 
-7. Git add, commit, dan push. Kemudian saya cek workflow pada github. Aplikasi bisa berjalan, tetapi database (initial_mywatchlist_data.json) tidak muncul. Lalu saya lakukan loaddata ulang di CLI Heroku Bash, kemudian aplikasi berjalan lancar.
+7. Menambahkan path baru pada app urls.py agar bisa mengakses /login, /register, /create-task, dan /logout.
+
+8. Git add, commit, push. Aplikasi otomatis terdeploy pada heroku (appname: pbptugas2)
+
+9. Membuat 2 user dan 3 dummy data tiap user pada app heroku.
 
 
 <br>
