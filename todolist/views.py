@@ -24,7 +24,7 @@ def show_home(request):
 @login_required(login_url='/todolist/login/')
 def get_add_task(request):
     form = AddTaskForm()
-    context = {'form': form,}
+    context = {'form': form, 'nama_user': request.user.username,}
     
     if request.method == 'POST':
         form = AddTaskForm(request.POST)
@@ -52,10 +52,8 @@ def saveform(request):
         return redirect('todolist:show_home')
 
 
-
 def register(request):
     form = UserCreationForm()
-
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():

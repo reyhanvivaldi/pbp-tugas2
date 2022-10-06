@@ -6,40 +6,67 @@
 
 {% block content %}
 
-<div class = "login">
-
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
+<body>
+    <div class="container"> 
+        <div class = "login">
+            <h2 style="text-align: center;">Login</h1>
         
-    Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a>
+            <form class="inline" method="POST" action="" style="max-width: max-content;">
+                {% csrf_token %}
+                
+                <i class="fa fa-user icon"></i>
+                <input type="text" name="username" placeholder="Username" class="form-control">
 
-</div>
+                <i class="fa fa-lock icon"></i>
+                <input type="password" name="password" placeholder="Password" class="form-control">
+
+                <input class="btn btn-primary" type="submit" value="Login">
+            </form>
+        
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}     
+                
+            <p style="text-align: center;">Belum mempunyai akun? <a href="{% url 'todolist:register' %}">Buat Akun</a></p> 
+        
+        </div>
+    </div>
+</body>
+
+
+<style>
+li {
+    color: green;
+}
+.login {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 400px;
+    }
+.btn-primary {
+    margin-top: 10px;
+    margin-bottom: 16px;
+    padding: 6px 170px 10px 170px;
+    width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+      .login {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%;
+      }
+}
+    
+</style>
+
 
 {% endblock content %}

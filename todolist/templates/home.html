@@ -2,89 +2,102 @@
 
  {% block content %}
 
-  <h1>Assignment 4 PBP</h1>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="d-none d-lg-block">
+    <h2 class="nav" style="color: white">To do list</h2>
+  </div>
 
-  <h5>Howdy, {{nama_user}}!</h5>
+  <div class="howdy">
+    <strong style="color: white;">Howdy, {{ nama_user }}!</strong>
+  </div>
 
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-    </tr>
-    {% comment %} Add the data below this line {% endcomment %}
+  <div class="nav-right">
+    <a class="btn btn-danger" style="width: 100px; padding-bottom: 8px;" href="{% url 'todolist:logout_user' %}">Logout</a>
+  </div>
+</nav>
 
-    {% for item in task_item %}
-    <tr>
-      <th>{{item.date}}</th>
-      <th>{{item.title}}</th>
-      <th>{{item.description}}</th>
-    </tr>
-    {% endfor %}
+ <body>
+  <div class="container" style="margin-bottom: 100px;">
 
-  </table>
-    <button class="add-task-button"><a href="{% url 'todolist:get_add_task' %}" class="text-button">Add new task</a></button>
-    <button class="logout-button"><a href="{% url 'todolist:logout_user' %}" class="text-button">Logout</a></button>
+    {% if task_item  %}
+    <h1>{{nama_user}}, this is your todo list!</h1>
+    <h4 style="color: #6C757D;">Don't forget to do it yes! &#x1F609;</h4>
 
+    <div class="row" style="margin-top: 20px;">
+      {% for item in task_item %}
+          <div class="col-sm-6" style="margin-top: 10px;">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{item.title}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                <p class="card-text mb-2 text-muted">{{item.date | date:"F, j Y - H:i"}}</p>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+      <div>
+        <a class="btn btn-primary" href="{% url 'todolist:get_add_task' %}">Add new task</a>
+      </div>
+      
+    </div>
 
+    {% else %}
+    <div class="prim2">
+      <h1 style="text-align: center; margin-top: 40px;">Ouch, {{nama_user}}!</h1>
+      <h4 style="color: #6C757D; text-align: center;"> You don't have any task! &#128533;</h4>
+      <a class="btn btn-primary" href="{% url 'todolist:get_add_task' %}">Add new task</a>
+    </div>
+      
 
+    {% endif %}
+    
+  </div>
+ </body>
+
+  
 
 
   <style>
-    button {
-        cursor: pointer;
-        transition: background-color 0.2s;
-        transition: color 0.2s;
-        font-family: Arial, Helvetica, sans-serif;
-        margin-top: 40px;
-        border: none;
-        border-radius: 5px;
-        padding-left: 20px;
+    .nav {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    font-family: Helvetica, sans-serif;
+    }
+
+    .col-sm-6 {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+
+
+    .container {
+      margin-top: 70px;
+    }
+
+    .btn-primary {
+      margin-top: 20px;
+      margin-right: 5px;
+      padding-bottom: 8px;
+      width: 100%;
+    }
+
+    .prim2 {
+      width: 50%;
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .btn-secondary {
+      margin-top: 8px;
         padding-right: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-weight: 600;
-        font-size: 15px;
+        padding-left: 20px;
+        padding-bottom: 8px;
     }
-
-
-    h5 {
-      font-size: 25px;
-      margin-bottom: 20px;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    h1 {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    tr {
-        font-size: 17px;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-    .logout-button {
-        background-color: #7253AC;
-        color: white;
-        text-decoration: none;
-    }
-    .logout-button:hover {
-        background-color: #633cac;
-    }
-
-    .add-task-button {
-        background-color: #7253AC;
-        color: white;
-        text-decoration: none;
-        
-    }
-    .add-task-button:hover {
-        background-color: #633cac;
-    }
-
-    .text-button {
-      color: white;
-      text-decoration: none;
-    }
+    
     
   </style>
 
