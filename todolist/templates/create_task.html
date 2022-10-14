@@ -24,22 +24,19 @@
     
     <h2>Add new task</h2>  
 
-        <form method="POST" style="margin-bottom: 15px;" >  
-            {% csrf_token %}  
-            <table>
-                {% for field in form %}
-                <tr><td>{{ field.label_tag }}</td></tr>
-                <tr><td>{{ field }}</td></tr>
-                {% endfor %}
+        <form id= "form" method="POST" style="margin-bottom: 15px;" >  
+            {% csrf_token %}
+            <div class="form-outline mb-4">
+              <input type="text" name="title" class="form-control mb-4" placeholder="Name" />
+              <textarea class="form-control mb-4" name="description" rows="4"></textarea>
+            </div>
 
-            </table>
-            <input class="btn btn-primary" type="submit" name="submit" value="Add task"/>
-            <a class="btn btn-secondary" href="{% url 'todolist:show_home' %}">Back to home</a>
+            <input id="button" class="btn btn-primary" type="submit" name="submit" value="Add task"/>
+            <a class="btn btn-secondary" href="{% url 'todolist:home' %}">Back to home</a>
         </form>
-        
-        
-        
-</div>  
+      
+</div>
+
 
 <style>
     .nav {
@@ -59,8 +56,8 @@
     }
 
     .btn-primary {
+        width: 235px;
         margin-top: 10px;
-        max-width: 235px;
         margin-right: 5px;
         padding-bottom: 8px;
     }
@@ -71,7 +68,17 @@
         padding-left: 20px;
         padding-bottom: 8px;
     }
+
+    @media screen and (max-width: 1000px) {
+      .btn-primary {
+        width: 100%;
+      }
+      .btn-secondary {
+        width: 100%;
+      }
+    }
     
 </style>
+
 
 {% endblock content %}

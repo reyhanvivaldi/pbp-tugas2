@@ -1,10 +1,74 @@
 {% extends 'base.html' %}
+{% load static %}
 
- {% block content %}
+{% block content %}
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    window.CSRF_TOKEN = '{{csrf_token}}';
+  </script>
+</head>
+
+
+<script>
+  function createCards(task) {
+      const tasks_area = document.getElementById("tasks-area");
+      var string = '<div class="col-sm-6" style="margin-top: 10px;"><div class="card"><div class="card-body"><h5 class="card-title" id="card-title">' + task.fields.title + '</h5><p class="card-text">' + task.fields.description + '</p><p class="card-text mb-2 text-muted">' + task.fields.date + '</p></div></div></div>'
+      tasks_area.insertAdjacentHTML('beforeend', '<div class="col-sm-6" style="margin-top: 10px;"><div class="card"><div class="card-body"><h5 class="card-title" id="card-title">' + task.fields.title + '</h5><p class="card-text">' + task.fields.description + '</p><p class="card-text mb-2 text-muted">' + task.fields.date + '</p></div></div></div>')
+  }
+
+  function getTasks() {
+    $.ajax({
+      url: "{% url 'todolist:get_todolist_json' %}",
+      type:"GET",
+      dataType: "json",
+      success: function(task_item) {
+        const area = document.getElementById("task-section");
+        if (task_item.length == 0) {
+          area.insertAdjacentHTML('afterbegin', "<div class='prim2' id='notask'><h1 style='text-align: center; margin-top: 40px;'>Ouch, {{nama_user}}!</h1><h4 style='color: #6C757D; text-align: center;'> You don't have any task! &#128533;</h4><a class='btn btn-primary' id='add-button' data-bs-toggle='modal' data-bs-target='#add-task-modal'>Add new task</a></div>")
+          document.getElementById('add-button').href='{% url "todolist:add_task" %}';
+        } else {
+          $("#notask").remove();
+          $("#ar").remove()
+          area.insertAdjacentHTML('afterbegin', "<div id='ar'><h1>{{nama_user}}, this is your todo list!</h1> <h4 style='color: #6C757D;'>Don't forget to do it yes! &#x1F609;</h4><div class='row' style='margin-top: 20px;'><div id='tasks-area'></div><div class='text-center'><button type='button' class='btn btn-primary add-task' data-bs-toggle='modal' data-bs-target='#add-task-modal'> Add new task </button></div></div></div>")
+          task_item.map(task => createCards(task));
+          console.log(task_item);
+        }
+      }
+    })
+  }
+
+  $(document).ready(function() {
+    getTasks();
+
+    $('#add-task-form').submit(function(e){
+      e.preventDefault();
+      
+      $.ajax({
+      url: "{% url 'todolist:add_task_ajax' %}",
+      method: "POST",
+      headers: {"X-CSRFToken": window.CSRF_TOKEN},
+      data: $('#add-task-form').serialize(),
+      success: (task) => {
+        $('#add-task-form').trigger("reset");
+        $('#add-task-modal').modal('hide');
+        // createCard(task)
+
+        getTasks();
+      }
+      })
+    })
+  })
+  
+</script>
+          
 
 <nav class="navbar navbar-dark bg-dark">
-  <div class="d-none d-lg-block">
-    <h2 class="nav" style="color: white">To do list</h2>
+  <div class="d-none d-lg-block" style="margin-left: 2%;">
+    <a class="navbar-brand" href="{% url 'todolist:home' %}">
+      <img src="{% static 'image/MyTodoList-logo.png' %}" width="160" height="55" alt="" style="margin-left: 5%;">
+    </a>
   </div>
 
   <div class="howdy">
@@ -17,41 +81,34 @@
 </nav>
 
  <body>
-  <div class="container" style="margin-bottom: 100px;">
 
-    {% if task_item  %}
-    <h1>{{nama_user}}, this is your todo list!</h1>
-    <h4 style="color: #6C757D;">Don't forget to do it yes! &#x1F609;</h4>
-
-    <div class="row" style="margin-top: 20px;">
-      {% for item in task_item %}
-          <div class="col-sm-6" style="margin-top: 10px;">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{item.title}}</h5>
-                <p class="card-text">{{item.description}}</p>
-                <p class="card-text mb-2 text-muted">{{item.date | date:"F, j Y - H:i"}}</p>
-              </div>
-            </div>
-          </div>
-      {% endfor %}
-      <div>
-        <a class="btn btn-primary" href="{% url 'todolist:get_add_task' %}">Add new task</a>
-      </div>
-      
-    </div>
-
-    {% else %}
-    <div class="prim2">
-      <h1 style="text-align: center; margin-top: 40px;">Ouch, {{nama_user}}!</h1>
-      <h4 style="color: #6C757D; text-align: center;"> You don't have any task! &#128533;</h4>
-      <a class="btn btn-primary" href="{% url 'todolist:get_add_task' %}">Add new task</a>
-    </div>
-      
-
-    {% endif %}
-    
+  <div class="container" style="margin-bottom: 100px;" id="task-section">
   </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="add-task-modal" tabindex="-1" aria-labelledby="add-task-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="add-task-modal-label">Add new task</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="add-task-form">
+            {% csrf_token %}
+            <div class="form-outline mb-4">
+              <input type="text" id="title" name="title" class="form-control mb-4" placeholder="Belajar UTS Pachill Bos" />
+              <textarea class="form-control mb-4" id="description" name="description" rows="4" placeholder="Belajar SDA, PBP, Alin tiap hari 24 jam"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit-task-btn">Submit task</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
  </body>
 
   
@@ -80,7 +137,7 @@
       margin-top: 20px;
       margin-right: 5px;
       padding-bottom: 8px;
-      width: 100%;
+      width: 98%;
     }
 
     .prim2 {
@@ -100,6 +157,7 @@
     
     
   </style>
+
 
  {% endblock content %}
 

@@ -7,4 +7,4 @@ class AddTaskForm(forms.ModelForm):
 
     class Meta:
         model = Task
-        exclude = ['user', 'date']#?
+        exclude = ['user', 'date']
